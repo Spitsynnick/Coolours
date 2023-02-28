@@ -12,16 +12,16 @@ document.addEventListener("keydown", (event) => {
 
 // Обработчик нажатия ЛКМ
 document.addEventListener("click", (event) => { 
-    const type = event.target.dataset.type // Получить data-атрибут элемента, на котором произведен клик 
+    const type = event.target.dataset.type 
 
-    if (type === "lock") { // для кнопки, - переключить класс для изменения иконки
+    if (type === "lock") { 
 
        const node = event.target.children[0];
 
        node.classList.toggle("fa-lock-open"); 
        node.classList.toggle("fa-lock"); 
 
-    } else if (type === "copy") { // для заголовка, - скопировать текст (код цвета)
+    } else if (type === "copy") { 
 
        copyToClickboard(event.target.textContent); 
     }
@@ -85,7 +85,7 @@ function setRandomColors(isInitial) {
 
 // функция устанавливает цвет текста (черный/белый) в зависимости от яркости основного цвета
 function setTextColor(text, color) { 
-    const luminance = chroma(color).luminance(); // относительная яркость цвета в диапазоне 0 - 1
+    const luminance = chroma(color).luminance(); 
     text.style.color = luminance > 0.5 ? "black" : "white"; 
 };
 
@@ -101,7 +101,7 @@ function updateColorsHash(colors = []) {
 function getColorsFromHash() { 
     if (document.location.hash.length > 1) {
         return document.location.hash
-            .substring(1) // удалить из строки дефолтный символ #
+            .substring(1) 
             .split("-") 
             .map(color => "#" + color); 
     };
